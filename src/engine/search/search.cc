@@ -477,6 +477,7 @@ Score Search::PVSearch(int depth,
       int reduction = tables::kLateMoveReduction[depth][moves_seen];
       reduction += !in_pv_node;
       reduction -= state.InCheck();
+      reduction += !improving;
 
       // Ensure the reduction doesn't give us a depth below 0
       reduction = std::clamp<int>(reduction, 0, new_depth - 1);
